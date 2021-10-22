@@ -8,3 +8,6 @@ class parking:
         self.is_covered        = is_covered
         self.price_hour        = price_hour
 
+
+
+
