@@ -8,4 +8,4 @@ class Window():
         self.WINDOW_HEIGHT = 780
         self.window = pygame.display.set_mode((self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.background = pygame.image.load("assets/bg.png")
-        pygame.display.set_caption("IDETA")
+        pygame.display.set_caption("SPOT FINDER")
