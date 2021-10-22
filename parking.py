@@ -11,22 +11,3 @@ class parking():
         self.electrical_spaces = electrical_spaces
         self.is_covered        = is_covered
         self.price_hour        = price_hour
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
-
-
-        
-
-
->>>>>>> dc2a15805f999bf3041c8c589deb9bee8b2c856e
-
-
-
-
-<<<<<<< HEAD
->>>>>>> 13db554e52f1a897b164f5511f0431d9f73fb523
-=======
->>>>>>> dc2a15805f999bf3041c8c589deb9bee8b2c856e
