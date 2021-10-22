@@ -2,7 +2,10 @@ import csv
 from parking import *
 
 
-header = ["name","xLocation","yLocation", "affluance", "total_capacity", "current_capacity","electiral_spaces",]
+# ------------------------------------------------------------------------------
+#
+header = ["name","xCoord","yCoord","maxCap","morningOcc","noonOcc","eveningOcc"]
+
 with open('parking_gen.csv', 'w', encoding='UTF8', newline='') as file:
      
     writer =  csv.writer(file) 

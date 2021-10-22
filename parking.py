@@ -2,14 +2,15 @@ import pygame
 
 class parking():
 
-    def __init__(self, location_tp, affluance,  electrical_spaces, is_covered, price_hour, ):
+    def __init__(self, name, xCoord, yCoord, maxCap, morningOCC, noonOCC,eveningOcc,):
 
-
-        self.location_tp       = location_tp
-        self.electrical_spaces = electrical_spaces
-        self.is_covered        = is_covered
-        self.price_hour        = price_hour
-        self.affluance         =  affluance
+        self.name              = name
+        self.xCoord            = xCoord
+        self.yCoord            = yCoord
+        self.maxcap            = maxCap
+        self.morningOCC        = morningOCC
+        self.eveningOCC        = noonOCC
+        self.eveningOCC        = eveningOcc
 
 
     def afflluance_to_rgb(parking):
