@@ -1,6 +1,6 @@
 import pygame
 from pygame import draw
-class parking(pygame.sprite.Sprite()):
+class parking():
 
     def __init__(self, location_tp,total_spaces, available_spaces, electrical_spaces, is_covered, price_hour, ):
         
