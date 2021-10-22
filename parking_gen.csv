@@ -1,0 +1,9 @@
+name,xCoord,yCoord,maxCap,morningOcc,noonOcc,eveningOcc
+Parking_A,790,175,200,176,46,65
+Parking_B,900,165,200,3,182,58
+Parking_C,960,145,200,61,178,44
+Parking_D,1045,90,50,32,8,32
+Parking_B28,420,220,80,18,71,7
+Parking_Trifacultaire,1125,185,120,38,74,98
+Parking_B52,300,160,70,53,30,25
+Parking_B37,400,155,30,14,5,2
