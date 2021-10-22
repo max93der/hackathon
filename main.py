@@ -5,11 +5,7 @@ from gui import Window
 #initialisaiton de pygame et definition de variables nécessaires
 pygame.init()
 
-<<<<<<< HEAD
-pk = pk
-=======
 win = Window()
->>>>>>> 13baabb03d3dc6fba158c6061afd52c32699ce73
 
 running = True
 
