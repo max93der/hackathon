@@ -8,3 +8,5 @@ print("salut")
 print("yaaay baybe")
 
 print("c'est abdel")
+
+print("a fou")
