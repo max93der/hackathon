@@ -1,10 +1,11 @@
-from parking import parking as pk
+from parking import parking
 import pygame
 
 
 #initialisaiton de pygame et definition de variables nécessaires
 pygame.init()
 
+pk = pk
 
 running = True
 pygame.display.set_caption("IDETA")
