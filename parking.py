@@ -20,6 +20,8 @@ class parking():
             return (255, 128, 0)
         elif parking.affluance < 66:
             return (255, 0, 0)
+    
+   
 
     
 
