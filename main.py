@@ -18,8 +18,8 @@ parking_list = [
     parking((420, 220), random.randint(0, 100), random.randint(1, 4), random.randint(1, 2), 0),
     parking((1125, 185), random.randint(0, 100), random.randint(1, 4), random.randint(1, 2), 0),
     parking((300, 160), random.randint(0, 100), random.randint(1, 4), random.randint(1, 2), 0),
-
 ]
+
 
     
 
