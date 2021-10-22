@@ -20,7 +20,7 @@ class Window():
 
     def draw_toggled_button(self):
         if (self.advanced_enabled == 1):
-            pass
+            self.draw_advanced_buttons()
         else:
             pygame.draw.rect(self.window, self.RED, (0, self.WINDOW_HEIGHT - 20, 50, 20))
             self.window.blit(self.font.render('extra', True, self.BLACK), (5, self.WINDOW_HEIGHT -20))
