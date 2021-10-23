@@ -15,6 +15,7 @@ class Window():
         self.WINDOW_HEIGHT = 780
         self.window = pygame.display.set_mode((self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.background = pygame.image.load("assets/bg.png")
+        self.iphone = pygame.transform.scale(pygame.image.load("assets/iphone.png"), (self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.font = pygame.font.SysFont('Arial', 20)
         pygame.display.set_caption("SPOT FINDER")
         self.BUTTON_WIDTH = 15
