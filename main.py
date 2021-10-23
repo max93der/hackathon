@@ -38,8 +38,9 @@ while (running):
                 pygame.quit()
         
             if event.type == pygame.MOUSEBUTTONUP:
-                pos = pygame.mouse.get_pos() 
+                pos = pygame.mouse.get_pos()
                 win.check_button_click(pos)
+
             if event.type == pygame.K_SPACE:
                 Enville = True
                 Ensart = False

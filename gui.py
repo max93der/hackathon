@@ -19,7 +19,9 @@ class Window():
         self.background = pygame.image.load("assets/bg.png")
         self.background2 = pygame.image.load("assets/ath.png")
         self.pmrblanc = pygame.transform.scale(pygame.image.load("assets/PMRblanc.png"), (self.ICON_WIDTH, self.ICON_HEIGHT))
+
         self.pmrbleu = pygame.transform.scale(pygame.image.load("assets/PMRbleu.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
+        self.pmrrect = self.pmrbleu.get_rect()
         self.prise = pygame.transform.scale(pygame.image.load("assets/prise.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
         self.prise_blanc = pygame.transform.scale(pygame.image.load("assets/prise_blanc.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
         self.iphone = pygame.transform.scale(pygame.image.load("assets/iphone.png"), (self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
@@ -28,10 +30,9 @@ class Window():
         self.BUTTON_WIDTH = 15
         self.button_state = []
         self.advanced_enabled = 0
-        self.advanced_enabled = 0   
+        self.advanced_enabled = 0
         self.buttons = []
         self.add_button()
-
 
     def add_button(self):
 
@@ -55,7 +56,11 @@ class Window():
 
     def check_button_click(self, pos):
         for button in self.buttons:
-            self.button_click(button, pos)
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONUP:
+                    button.getrect().collidepoint(event.pos)
+                    print("chris")
+
 
             # ---- displaying color circles 
             parking_list = decrypt("parking_gen.csv")
