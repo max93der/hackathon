@@ -1,4 +1,7 @@
 import pygame
+from pygame import draw
+
+from decryptor import decrypt
 
 class Window():
 
@@ -46,6 +49,9 @@ class Window():
         circle = pygame.Surface((x * 2, y * 2), pygame.SRCALPHA)
         pygame.draw.circle(circle, color, (x, y), radius)
         self.window.blit(circle, (100, 100))
+
+    
+        
 
 class Button():
     def __init__(self,x, y, color, text, window):
