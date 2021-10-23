@@ -18,9 +18,9 @@ win = Window()
 
 running = True
 #display the first datas
-parking_list = decrypt("parking_gen.csv")
+#parking_list = decrypt("parking_gen.csv")
 
-print(parking_list[0][0][0].name)
+#print(parking_list[0][0][0].name)
 
 while (running):
     win.window.blit(win.background, (0,0))
@@ -28,6 +28,7 @@ while (running):
     win.window.blit(win.iphone, (0, 0))
 
     #displaying initial data
+    
     """
     for parking in parking_list:
         
@@ -53,6 +54,7 @@ while (running):
                     #print(hours.maxcap/hours.Ocupation)
                     win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
 """
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()

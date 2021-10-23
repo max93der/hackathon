@@ -29,7 +29,7 @@ def decrypt(filename):
                 #print(len(parking_hours))
                 if len(parking_hours) == 8:
                     parking_days.append(parking_hours)
-                    len(print(parking_days))
+                    #len(print(parking_days))
                     print("yep")
                 if len(parking_days) == 12:
                     parking_list.append(parking_days)
