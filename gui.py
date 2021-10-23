@@ -64,7 +64,7 @@ class Window():
             parking_list = decrypt("parking_gen.csv")
     
             for parking in parking_list:
-                print("gotclicked")
+                
                 if parking.noonOCC/parking.maxcap > 0.66:
                     self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
 
@@ -114,7 +114,7 @@ class Button():
             parking_list = decrypt("parking_gen.csv")
     
             for parking in parking_list:
-                print("gotclicked")
+                
                 if parking.noonOCC/parking.maxcap > 0.66:
                     self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
 

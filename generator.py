@@ -17,14 +17,14 @@ def generate_file():
     header = ["name","xCoord","yCoord","areaRadius","maxCap","morningOcc","noonOcc","eveningOcc"]
 
     data = [
-        ['Parking_A', 790, 175, 50, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
-        ['Parking_B', 900, 165, 50, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
-        ['Parking_C', 960, 145, 50, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
-        ['Parking_D', 1045, 90, 50, 50, rd.randint(0, 50), rd.randint(0, 50), rd.randint(0, 50)],
-        ['Parking_B28', 420, 220, 50, 80, rd.randint(0, 80), rd.randint(0, 80), rd.randint(0, 80)],
-        ['Parking_Trifacultaire', 1125, 185, 50, 120, rd.randint(0, 120), rd.randint(0, 120), rd.randint(0, 120)],
-        ['Parking_B52', 300, 160, 50, 70, rd.randint(0, 70), rd.randint(0, 70), rd.randint(0, 70)],
-        ['Parking_B37', 400, 155, 50, 30, rd.randint(0, 30), rd.randint(0, 30), rd.randint(0, 30)]
+        ['Parking_A', 790, 175, 20, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
+        ['Parking_B', 900, 165, 20, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
+        ['Parking_C', 960, 145, 20, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
+        ['Parking_D', 1045, 90, 20, 50, rd.randint(0, 50), rd.randint(0, 50), rd.randint(0, 50)],
+        ['Parking_B28', 420, 220, 20, 80, rd.randint(0, 80), rd.randint(0, 80), rd.randint(0, 80)],
+        ['Parking_Trifacultaire', 1125, 185, 20, 120, rd.randint(0, 120), rd.randint(0, 120), rd.randint(0, 120)],
+        ['Parking_B52', 300, 160, 20, 70, rd.randint(0, 70), rd.randint(0, 70), rd.randint(0, 70)],
+        ['Parking_B37', 400, 155, 20, 30, rd.randint(0, 30), rd.randint(0, 30), rd.randint(0, 30)]
     ]
 
     # ------------------------------------ WRITING ---------------------------------
