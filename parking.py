@@ -2,6 +2,7 @@ import pygame
 
 class parking():
 
+<<<<<<< HEAD
     # ------------------------------------ DATA ------------------------------------
     # name          = nom du parking
     # xCoord        = coordonnées en x (en pixel dans un premier temps)
@@ -12,12 +13,12 @@ class parking():
     # noonOcc       = taux d'affluence à midi (numérateur du ratio d'affluence)
     # eveningOcc    = taux d'affluence au soir (numérateur du ratio d'affluence)
 
-    def __init__(self, name, xCoord, yCoord, maxCap, morningOCC, noonOCC, eveningOCC,):
-
+    def __init__(self, name, xCoord, yCoord, maxCap, morningOCC, noonOCC, ev
         self.name              = name
         self.xCoord            = xCoord
         self.yCoord            = yCoord
         self.maxcap            = maxCap
         self.morningOCC        = morningOCC
         self.eveningOCC        = noonOCC
+<<<<<<< HEAD
         self.eveningOCC        = eveningOCC
