@@ -2,6 +2,7 @@ import pygame
 import csv
 from parking import *
 
+#prend un fichier csv en entrée et retourne une liste de parkings
 
 def decrypt(filename):
     parking_list = []
@@ -23,10 +24,7 @@ def decrypt(filename):
     return parking_list
 
 
-# if you wanna test  test just uncomment
 
-for objects in decrypt("parking_gen.csv"):
-    print(objects.areaRadius)
     
 
 
