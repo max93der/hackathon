@@ -12,10 +12,11 @@ class parking():
     # noonOcc       = taux d'affluence à midi (numérateur du ratio d'affluence)
     # eveningOcc    = taux d'affluence au soir (numérateur du ratio d'affluence)
 
-    def __init__(self, name, xCoord, yCoord, maxCap, morningOCC, noonOCC, eveningOCC):
+    def __init__(self, name, xCoord, yCoord, areaRadius, maxCap, morningOCC, noonOCC, eveningOCC):
         self.name              = name
         self.xCoord            = xCoord
         self.yCoord            = yCoord
+        self.areaRadius        = areaRadius
         self.maxcap            = maxCap
         self.morningOCC        = morningOCC
         self.eveningOCC        = noonOCC
