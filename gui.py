@@ -43,12 +43,6 @@ class Window():
                     button.draw_button()
                     button.draw_text()
 
-    def draw_timeline(self):
-        i = 150
-        while i <= 570:
-            pygame.draw.line(self.window, (0, 0, 0), (150, 680), (570, 680), 6)
-            pygame.draw.line(self.window, (0, 0, 0), (i, 700), (i, 660), 6)
-            i += 35
 
     def draw_cercle(self, x, y, radius, color):
 
