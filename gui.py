@@ -5,6 +5,7 @@ class Window():
     def __init__(self):
         self.BLACK = (0, 0, 0)
         self.RED = (255, 0, 0)
+        self.WHITE = (255, 255, 255)
         self.WINDOW_WIDTH = 1430
         self.WINDOW_HEIGHT = 780
         self.window = pygame.display.set_mode((self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
@@ -14,47 +15,47 @@ class Window():
         self.BUTTON_WIDTH = 15
         self.button_state = []
         self.advanced_enabled = 0
+        self.advanced_enabled = 1
+        self.buttons = []
+        self.add_button()
 
     def draw_advanced_buttons(self, x, y, text):
         pygame.draw.rect(self.window, self.BLACK, pygame.Rect(x, y, self.BUTTON_WIDTH, self.BUTTON_WIDTH),2)
 
     def draw_toggled_button(self):
         if (self.advanced_enabled == 1):
-            self.draw_advanced_buttons()
+            pygame.draw.rect(self.window, self.WHITE, (0, self.WINDOW_HEIGHT - 180, self.WINDOW_WIDTH, 200))
+            pygame.draw.rect(self.window, self.RED, (0, self.WINDOW_HEIGHT - 20, 50, 20))
+            self.window.blit(self.font.render('extra', True, self.BLACK), (5, self.WINDOW_HEIGHT - 20))
         else:
             pygame.draw.rect(self.window, self.RED, (0, self.WINDOW_HEIGHT - 20, 50, 20))
             self.window.blit(self.font.render('extra', True, self.BLACK), (5, self.WINDOW_HEIGHT -20))
 
+    def add_button(self):
+        self.buttons.append(Button(0, self.WINDOW_HEIGHT, self.RED,"extra", self.window))
+        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 100 ,self.BLACK, "Matin", self.window)))
+        self.buttons.append((Button(0,self.WINDOW_HEIGHT - 70, self.BLACK, "Midi", self.window)))
+        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 40, self.BLACK, "Soir", self.window)))
 
+    def draw_button(self):
+        for button in self.buttons:
+            print(button.coord)
+            button.draw_button()
 
-import pygame
+    def draw_cercle(self, x, y, radius, color):
+        circle = pygame.Surface((x * 2, y * 2), pygame.SRCALPHA)
+        pygame.draw.circle(circle, color, (x, y), radius)
+        self.window.blit(circle, (100, 100))
 
-#button class
 class Button():
-	def __init__(self,x, y, image, scale):
-		width = image.get_width()
-		height = image.get_height()
-		self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
-		self.rect = self.image.get_rect()
-		self.rect.topleft = (x, y)
-		self.clicked = False
+    def __init__(self,x, y, color, text, window):
+        self.state = 0
+        self.coord = (x,y)
+        self.BUTTON_WIDTH = 15
+        self.text = text
+        self.color = color
+        self.window = window
 
-	def draw(self, surface):
-		action = False
+    def draw_button(self):
+        pygame.draw.rect(self.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_WIDTH,), 2)
 
-		#get mouse position
-		pos = pygame.mouse.get_pos()
-
-		#check mouseover and clicked conditions
-		if self.rect.collidepoint(pos):
-			if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
-				action = True
-				self.clicked = True
-
-		if pygame.mouse.get_pressed()[0] == 0:
-			self.clicked = False
-
-		#draw button
-		surface.blit(self.image, (self.rect.x, self.rect.y))
-
-		return action
