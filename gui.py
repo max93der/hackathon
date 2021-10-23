@@ -13,9 +13,15 @@ class Window():
         self.WHITE = (255, 255, 255)
         self.WINDOW_WIDTH = 1430
         self.WINDOW_HEIGHT = 780
+        self.ICON_WIDTH = 100
+        self.ICON_HEIGHT = 100
         self.window = pygame.display.set_mode((self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.background = pygame.image.load("assets/bg.png")
         self.background2 = pygame.image.load("assets/ath.png")
+        self.pmrblanc = pygame.transform.scale(pygame.image.load("assets/PMRblanc.png"), (self.ICON_WIDTH, self.ICON_HEIGHT))
+        self.pmrbleu = pygame.transform.scale(pygame.image.load("assets/PMRbleu.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
+        self.prise = pygame.transform.scale(pygame.image.load("assets/prise.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
+        self.prise_blanc = pygame.transform.scale(pygame.image.load("assets/prise_blanc.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
         self.iphone = pygame.transform.scale(pygame.image.load("assets/iphone.png"), (self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.font = pygame.font.SysFont('Arial', 25)
         pygame.display.set_caption("SPOT FINDER")
@@ -38,11 +44,8 @@ class Window():
         self.window.blit(s, (0, self.WINDOW_HEIGHT - 140))
 
     def draw_button(self):
-            for button in self.buttons:
-                if button.visibility == 1:
-                    button.draw_button()
-                    button.draw_text()
-
+            self.window.blit(self.pmrblanc, (self.WINDOW_WIDTH - self.ICON_WIDTH - 100, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+            self.window.blit(self.prise_blanc, (self.WINDOW_WIDTH - self.ICON_WIDTH - 300, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
 
     def draw_cercle(self, x, y, radius, color):
 
