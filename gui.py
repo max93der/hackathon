@@ -51,6 +51,12 @@ class Window():
     def check_button_click(self, pos):
         for button in self.buttons:
             self.button_click(button, pos)
+            if button.pushed == 1:
+                for button_clicked in self.buttons[1:]:
+                    if button_clicked != button:
+                        button_clicked.pushed = 0
+
+
         if self.buttons[0].pushed == 1:
             self.advanced_enabled = 1
         else:
