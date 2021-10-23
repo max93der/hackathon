@@ -21,7 +21,7 @@ class Window():
         self.BUTTON_WIDTH = 15
         self.button_state = []
         self.advanced_enabled = 0
-        self.advanced_enabled = 0
+        self.advanced_enabled = 0   
         self.buttons = []
         self.add_button()
 

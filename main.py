@@ -28,22 +28,30 @@ while (running):
     win.window.blit(win.background, (0,0))
     win.window.blit(win.iphone, (0, 0))
     #displaying initial data
+    days_count = 0
     for parking in parking_list:
+        
+        
         for days in parking:
+            days_count = 0
             for hours in days:
+                days_count += 1
+                print(days_count)
                 if hours.maxcap/hours.Ocupation > 0.66:
-                    print(hours.maxcap/hours.Ocupation)
-                    pass
+                    #print(hours.maxcap/hours.Ocupation)
+                    
                     #win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
-
+                    pass
                 elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
-                    print(hours.maxcap/hours.Ocupation)
+                    #print(hours.maxcap/hours.Ocupation)
+                    #print(days_count)
                     pass
                     #win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
                 else:
                     pass
-                    print(hours.maxcap/hours.Ocupation)
-                    #win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
+                    #print(days_count)
+                    #print(hours.maxcap/hours.Ocupation)
+                    win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
