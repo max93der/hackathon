@@ -46,7 +46,7 @@ class Window():
             button.draw_button()
 
     def draw_cercle(self, x, y, radius, color):
-        circle = pygame.Surface((x * 2, y * 2), pygame.SRCALPHA)
+        circle = pygame.Surface((x*2 , y*2 ), pygame.SRCALPHA)
         pygame.draw.circle(circle, color, (x, y), radius)
         self.window.blit(circle, (100, 100))
 
