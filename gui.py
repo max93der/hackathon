@@ -16,7 +16,7 @@ class Window():
         self.window = pygame.display.set_mode((self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.background = pygame.image.load("assets/bg.png")
         self.iphone = pygame.transform.scale(pygame.image.load("assets/iphone.png"), (self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
-        self.font = pygame.font.SysFont('Arial', 20)
+        self.font = pygame.font.SysFont('Arial', 25)
         pygame.display.set_caption("SPOT FINDER")
         self.BUTTON_WIDTH = 15
         self.button_state = []
@@ -28,8 +28,13 @@ class Window():
 
     def add_button(self):
 
-        self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PME",self.BLACK,  self, 15, 15, 1, 2, 20)))
-        self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 70, self.BLACK, "Electricité",self.BLACK, self, 15, 15, 1, 2, 20)))
+        self.buttons.append((Button(self.WINDOW_WIDTH - 400, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PME",self.BLACK,  self, 15, 15, 1, 2, 20)))
+        self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 100, self.BLACK, "Electricité",self.BLACK, self, 15, 15, 1, 2, 20)))
+
+    def draw_backborder(self):
+        s = pygame.Surface((self.WINDOW_WIDTH, 140), pygame.SRCALPHA)
+        s.fill((255, 255, 255, 180))
+        self.window.blit(s, (0, self.WINDOW_HEIGHT - 140))
 
     def draw_button(self):
             for button in self.buttons:
@@ -46,9 +51,6 @@ class Window():
     def check_button_click(self, pos):
         for button in self.buttons:
             self.button_click(button, pos)
-
-        if self.buttons[0].pushed == 1:
-            self.advanced_enabled = 1
 
             # ---- displaying color circles 
             parking_list = decrypt("parking_gen.csv")
