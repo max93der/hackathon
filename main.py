@@ -24,7 +24,7 @@ print(parking_list[0][0][0].name)
 
 while (running):
     win.window.blit(win.background, (0,0))
-    win.draw_backborder()
+    win.draw_backboarder()
     win.window.blit(win.iphone, (0, 0))
 
     """"#displaying initial data
