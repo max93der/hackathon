@@ -24,8 +24,9 @@ while (running):
     win.window.blit(win.background, (0,0))
     win.draw_toggled_button()
     win.draw_button()
-    win.draw_cercle(800, 80, 40, RED_trns)
+
     # draw all parlkings on the map
     for parking in parking_list:
-        win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+        win.draw_cercle((parking.xCoord), (parking.yCoord), parking.areaRadius-20, RED_trns)
+
     pygame.display.flip()
