@@ -1,7 +1,4 @@
 import pygame
-from pygame import draw
-from pygame.draw import circle
-from generator import generate_file
 from decryptor import decrypt
 
 class Window():
@@ -32,12 +29,10 @@ class Window():
         self.advanced_enabled = 0
         self.advanced_enabled = 0
         self.buttons = []
-        self.add_button()
-
-    def add_button(self):
-
-        self.buttons.append((Button(self.WINDOW_WIDTH - 400, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PMR",self.BLACK,  self, 15, 15, 1, 2, 20)))
-        self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 100, self.BLACK, "Electricité",self.BLACK, self, 15, 15, 1, 2, 20)))
+        self.buttons.append(self.pmrblanc)
+        self.buttons.append(self.prise_blanc)
+        self.blue_prise = 0
+        self.blue_pmr = 0
 
     def draw_backboarder(self):
         s = pygame.Surface((self.WINDOW_WIDTH, 140), pygame.SRCALPHA)
@@ -45,8 +40,17 @@ class Window():
         self.window.blit(s, (0, self.WINDOW_HEIGHT - 140))
 
     def draw_button(self):
+        if (self.blue_pmr == 0):
             self.window.blit(self.pmrblanc, (self.WINDOW_WIDTH - self.ICON_WIDTH - 100, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+        else:
+            self.window.blit(self.pmrbleu, (
+                self.WINDOW_WIDTH - self.ICON_WIDTH - 100, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+
+        if (self.blue_prise == 0):
             self.window.blit(self.prise_blanc, (self.WINDOW_WIDTH - self.ICON_WIDTH - 300, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+        else:
+            self.window.blit(self.prise, (
+                self.WINDOW_WIDTH - self.ICON_WIDTH - 300, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
 
     def draw_cercle(self, x, y, radius, color):
 
@@ -54,22 +58,39 @@ class Window():
         pygame.draw.circle(circle, color, (x, y), radius)
         self.window.blit(circle, (0, 0))
 
-    def check_button_click(self, pos):
-        for button in self.buttons:
-            for event in pygame.event.get():
-                if event.type == pygame.MOUSEBUTTONUP:
-                    button.getrect().collidepoint(event.pos)
-                    print("chris")
+    def check_button_click(self, eventpos):
+
+        pmrblanc_rect = self.pmrblanc.get_rect()
+        pmrblanc_rect.x = self.WINDOW_WIDTH - self.ICON_WIDTH - 100
+        pmrblanc_rect.y = self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50
 
 
+        priseblanc_rect = self.prise_blanc.get_rect()
+        priseblanc_rect.x = self.WINDOW_WIDTH - self.ICON_WIDTH - 300
+        priseblanc_rect.y = self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50
+
+        if pmrblanc_rect.collidepoint(eventpos):
+            if self.blue_pmr == 1:
+                self.blue_pmr = 0
+            else:
+                self.blue_pmr = 1
+
+        if priseblanc_rect.collidepoint(eventpos):
+            if self.blue_prise == 1:
+                self.blue_prise = 0
+            else:
+                self.blue_prise = 1
+
+
+        """
             # ---- displaying color circles 
-            parking_list = decrypt("parking_gen.csv")
+            #parking_list = decrypt("parking_gen.csv")
 
 
         else:
             self.advanced_enabled = 0
         generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
-        
+        """
         
 
 
