@@ -53,8 +53,26 @@ class Window():
             self.button_click(button, pos)
         if self.buttons[0].pushed == 1:
             self.advanced_enabled = 1
+
+            # ---- displaying color circles 
+            parking_list = decrypt("parking_gen.csv")
+    
+            for parking in parking_list:
+                print("gotclicked")
+                if parking.noonOCC/parking.maxcap > 0.66:
+                    self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+
+                elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
+
+                    self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
+                else:
+                    self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
+
         else:
             self.advanced_enabled = 0
+        generate_file()
+        
+        
 
 
     def button_click(self,button, pos):
@@ -62,19 +80,7 @@ class Window():
             if (pos[1] > button.coord[1] and pos[1] < button.coord[1] + button.BUTTON_WIDTH):
                 if button.pushed == 0:
                     button.pushed = 1
-                    generate_file()
-                    parking_list = decrypt("parking_gen.csv")
-                    print("generated")
-                    for parking in parking_list:
-                        print("intopk")
-                        if parking.noonOCC/parking.maxcap > 0.66:
-                            self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
-
-                        elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
-
-                            self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
-                        else:
-                            self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
+                  
                 else:
                     button.pushed = 0
 
@@ -98,6 +104,19 @@ class Button():
     def draw_button(self):
         if self.pushed == 1:
             pygame.draw.rect(self.window.window, self.window.GREEN, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), 0)
+            # --- drawing circles
+            parking_list = decrypt("parking_gen.csv")
+    
+            for parking in parking_list:
+                print("gotclicked")
+                if parking.noonOCC/parking.maxcap > 0.66:
+                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+
+                elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
+
+                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
+                else:
+                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
         pygame.draw.rect(self.window.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
 
 

@@ -19,27 +19,15 @@ running = True
 
 
 while (running):
+    win.window.blit(win.background, (0,0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-
+    
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
             win.check_button_click(pos)
-    win.window.blit(win.background, (0,0))
-
-   # draw all parlkings on the map
     
-    # for parking in parking_list:
-    #     if parking.noonOCC/parking.maxcap > 0.66:
-    #         win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
-
-    #     elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
-
-    #         win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
-    #     else:
-           
-    #         win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
 
     win.draw_button()
     pygame.display.flip()
