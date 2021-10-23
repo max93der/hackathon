@@ -2,7 +2,7 @@ import pygame
 
 class parking():
 
-    def __init__(self, name, xCoord, yCoord, maxCap, morningOCC, noonOCC,eveningOcc,):
+    def __init__(self, name, xCoord, yCoord, areaRadius, maxCap, morningOCC, noonOCC,eveningOcc,):
 
         self.name              = name
         self.xCoord            = xCoord
@@ -11,6 +11,7 @@ class parking():
         self.morningOCC        = morningOCC
         self.eveningOCC        = noonOCC
         self.eveningOCC        = eveningOcc
+        self.areaRadius        = areaRadius
 
 
     def afflluance_to_rgb(parking):
