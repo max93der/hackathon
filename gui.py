@@ -1,7 +1,4 @@
 import pygame
-from pygame import draw
-
-from decryptor import decrypt
 
 class Window():
 
@@ -16,8 +13,6 @@ class Window():
         self.font = pygame.font.SysFont('Arial', 20)
         pygame.display.set_caption("SPOT FINDER")
         self.BUTTON_WIDTH = 15
-        self.button_state = []
-        self.advanced_enabled = 0
         self.advanced_enabled = 1
         self.buttons = []
         self.add_button()
