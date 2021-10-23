@@ -31,9 +31,9 @@ class Window():
         self.buttons.append((Button(self.WINDOW_WIDTH - 400, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PMR",self.BLACK,  self, 15, 15, 1, 2, 20)))
         self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 100, self.BLACK, "Electricité",self.BLACK, self, 15, 15, 1, 2, 20)))
 
-    def draw_backborder(self):
+    def draw_backboarder(self):
         s = pygame.Surface((self.WINDOW_WIDTH, 140), pygame.SRCALPHA)
-        s.fill((255, 255, 255, 180))
+        s.fill((200, 200, 200, 180))
         self.window.blit(s, (0, self.WINDOW_HEIGHT - 140))
 
     def draw_button(self):
