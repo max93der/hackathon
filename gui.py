@@ -27,7 +27,7 @@ class Window():
 
 
 
-import pygame 
+import pygame
 
 #button class
 class Button():
@@ -58,4 +58,3 @@ class Button():
 		surface.blit(self.image, (self.rect.x, self.rect.y))
 
 		return action
-
