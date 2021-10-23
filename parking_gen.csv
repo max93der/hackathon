@@ -1,9 +1,9 @@
 name,xCoord,yCoord,areaRadius,maxCap,Occupation
-Parking_A,790,175,20,200,23
-Parking_B,900,165,20,200,124
-Parking_C,960,145,20,200,18
-Parking_D,1045,90,20,50,19
-Parking_B28,420,220,20,80,15
-Parking_Trifacultaire,1125,185,20,120,118
-Parking_B52,300,160,20,70,3
-Parking_B37,400,155,20,30,25
+Parking_A,790,175,20,200,165
+Parking_B,900,165,20,200,90
+Parking_C,960,145,20,200,70
+Parking_D,1045,90,20,50,6
+Parking_B28,420,220,20,80,46
+Parking_Trifacultaire,1125,185,20,120,42
+Parking_B52,300,160,20,70,66
+Parking_B37,400,155,20,30,12

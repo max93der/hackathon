@@ -23,25 +23,6 @@ Enville = False
 #display the first datas
 parking_list = decrypt("parking_gen.csv")
 
-for parking in parking_list:
-    
-    if parking.maxcap/parking.Ocupation > 0.66:
-        #print(parking.maxcap/parking.Ocupation)
-        
-        win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
-        
-    elif parking.maxcap/parking.Ocupation < 0.66 and parking.maxcap/parking.Ocupation > 0.33:
-        #print(parking.maxcap/parking.Ocupation)
-        #print(days_count)
-        
-        win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
-    else:
-        
-        #print(days_count)
-        #print(parking.maxcap/parking.Ocupation)
-        win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
-
-
 
 while (running):
     while Ensart:
