@@ -7,6 +7,7 @@ from gui import Button, Window
 
 #initialisaiton de pygame et definition de variables nécessaires
 pygame.init()
+
 RED_trns   = (255,  0,  0, 100)    # red
 GREEN_trns = (0  ,255, 0 , 100) #green
 ORANGE_trns  = (255  ,128 , 0, 128) #blue
@@ -21,14 +22,13 @@ parking_list = decrypt("parking_gen.csv")
 
 print(parking_list[0][0][0].name)
 
-
-
-
 while (running):
     win.window.blit(win.background, (0,0))
+    win.draw_backboarder()
     win.window.blit(win.iphone, (0, 0))
+
     #displaying initial data
-    days_count = 0
+    """
     for parking in parking_list:
         
         
@@ -52,7 +52,7 @@ while (running):
                     #print(days_count)
                     #print(hours.maxcap/hours.Ocupation)
                     win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
-
+"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -61,6 +61,6 @@ while (running):
             pos = pygame.mouse.get_pos()
             win.check_button_click(pos)
     
-
+    win.draw_timeline()
     win.draw_button()
     pygame.display.flip()
