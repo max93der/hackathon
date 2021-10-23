@@ -42,7 +42,6 @@ class Window():
 
     def draw_button(self):
         for button in self.buttons:
-            #print(button.coord)
             button.draw_button()
 
     def draw_cercle(self, x, y, radius, color):
