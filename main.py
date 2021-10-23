@@ -15,9 +15,10 @@ ORANGE_trns  = (255  ,128 , 0, 128) #blue
 generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
 
 win = Window()
+win2 = Window()
 
 running = True
-Ensart = True
+Ensart = False
 Enville = True
 #display the first datas
 parking_list = decrypt("parking_gen.csv")
@@ -64,4 +65,20 @@ while (running):
         win.draw_button()
         pygame.display.flip()
     while Enville:
-        pass
+        win2.window.blit(win2.background2, (0,0))
+        win2.draw_backboarder()
+        win2.window.blit(win2.iphone, (0, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+        
+            if event.type == pygame.MOUSEBUTTONUP:
+                pos = pygame.mouse.get_pos()
+                
+                win2.check_button_click(pos)
+        
+        win2.draw_timeline()
+        win2.draw_button()
+        pygame.display.flip()
+        
