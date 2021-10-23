@@ -27,7 +27,7 @@ data = [
 ]
 
 # ------------------------------------ WRITING ---------------------------------
-with open('parking_data.csv', 'w', encoding='UTF8', newline='') as file:
+with open('parking_gen.csv', 'w', encoding='UTF8', newline='') as file:
 
     writer =  csv.writer(file)
     writer.writerow(header)
