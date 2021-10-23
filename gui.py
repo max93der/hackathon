@@ -1,7 +1,7 @@
 import pygame
 from pygame import draw
 from pygame.draw import circle
-
+from generator import generate_file
 from decryptor import decrypt
 
 class Window():
@@ -56,10 +56,23 @@ class Window():
             if (pos[1] > button.coord[1] and pos[1] < button.coord[1] + button.BUTTON_WIDTH):
                 if button.pushed == 0:
                     button.pushed = 1
+                    generate_file()
+                    parking_list = decrypt("parking_gen.csv")
+                    print("generated")
+                    for parking in parking_list:
+                        print("intopk")
+                        if parking.noonOCC/parking.maxcap > 0.66:
+                            self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+
+                        elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
+
+                            self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
+                        else:
+                            self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
                 else:
                     button.pushed = 0
 
-            print(button.text + " {}".format(button.pushed))
+            #print(button.text + " {}".format(button.pushed))
 
 
 class Button():
@@ -83,3 +96,8 @@ class Button():
 
     def draw_text(self):
         self.window.window.blit(self.window.font.render(self.text, True, self.window.BLACK), (self.coord[0] + self.offset, self.coord[1] - 5))
+
+
+RED_trns   = (255,  0,  0, 100)    # red
+GREEN_trns = (0  ,255, 0 , 100) #green
+ORANGE_trns  = (255  ,128 , 0, 128) #blue
