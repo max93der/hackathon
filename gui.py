@@ -23,28 +23,23 @@ class Window():
         self.buttons = []
         self.add_button()
 
-    def draw_advanced_buttons(self, x, y, text):
-        pygame.draw.rect(self.window, self.BLACK, pygame.Rect(x, y, self.BUTTON_WIDTH, self.BUTTON_WIDTH),2)
-
-    def draw_toggled_button(self):
-        if (self.advanced_enabled == 1):
-            pygame.draw.rect(self.window, self.WHITE, (0, self.WINDOW_HEIGHT - 180, self.WINDOW_WIDTH, 200))
-            pygame.draw.rect(self.window, self.RED, (0, self.WINDOW_HEIGHT - 20, 50, 20))
-            self.window.blit(self.font.render('extra', True, self.BLACK), (5, self.WINDOW_HEIGHT - 20))
-        else:
-            pygame.draw.rect(self.window, self.RED, (0, self.WINDOW_HEIGHT - 20, 50, 20))
-            self.window.blit(self.font.render('extra', True, self.BLACK), (5, self.WINDOW_HEIGHT -20))
 
     def add_button(self):
-        self.buttons.append(Button(0, self.WINDOW_HEIGHT, self.RED,"extra", self.window))
-        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 100 ,self.BLACK, "Matin", self.window)))
-        self.buttons.append((Button(0,self.WINDOW_HEIGHT - 70, self.BLACK, "Midi", self.window)))
-        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 40, self.BLACK, "Soir", self.window)))
+        self.buttons.append(Button(0, self.WINDOW_HEIGHT - 20, self.RED ,"Extra",self.WHITE, self, 50, 20, 1, 0, 5))
+        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 100 ,self.BLACK, "Matin",self.BLACK,  self, 15, 15, 1, 2, 20)))
+        self.buttons.append((Button(0,self.WINDOW_HEIGHT - 70, self.BLACK, "Midi",self.BLACK, self, 15, 15, 1, 2, 20)))
+        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 40, self.BLACK, "Soir",self.BLACK, self, 15, 15, 1, 2, 20)))
 
     def draw_button(self):
-        for button in self.buttons:
-            #print(button.coord)
-            button.draw_button()
+        if self.advanced_enabled == 1:
+            pygame.draw.rect(self.window, self.WHITE, (0, self.WINDOW_HEIGHT - 180, self.WINDOW_WIDTH, 200))
+            for button in self.buttons[1:]:
+                if button.visibility == 1:
+                    button.draw_button()
+                    button.draw_text()
+
+        self.buttons[0].draw_button()
+        self.buttons[0].draw_text()
 
     def draw_cercle(self, x, y, radius, color):
 <<<<<<< HEAD
@@ -60,16 +55,25 @@ class Window():
         
 
 class Button():
-    def __init__(self,x, y, color, text, window):
-        self.state = 0
+    def __init__(self,x, y, color, text, text_color, window, BUTTON_WIDTH, BUTTON_HEIGHT, visivility, filled, offset):
+
         self.coord = (x,y)
-        self.BUTTON_WIDTH = 15
         self.text = text
         self.color = color
         self.window = window
+        self.text_color = text_color
+        self.BUTTON_WIDTH = BUTTON_WIDTH
+        self.BUTTON_HEIGHT = BUTTON_HEIGHT
+        self.visibility = visivility
+        self.filled = filled
+        self.offset = offset
 
     def draw_button(self):
-        pygame.draw.rect(self.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_WIDTH,), 2)
+        pygame.draw.rect(self.window.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
+
+
+    def draw_text(self):
+        self.window.window.blit(self.window.font.render(self.text, True, self.window.BLACK), (self.coord[0] + self.offset, self.coord[1] - 5))
 
     def button_click(coord, state, width, event):
         if event.type == pygame.MOUSEBUTTONUP:
