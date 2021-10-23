@@ -19,8 +19,8 @@ class parking():
         self.areaRadius        = areaRadius
         self.maxcap            = maxCap
         self.morningOCC        = morningOCC
-        self.eveningOCC        = noonOCC
         self.eveningOCC        = eveningOCC
+        self.noonOCC           = noonOCC
         self.ratio             = 0
 
     def calculate_ratio(self, occupation) :
@@ -28,8 +28,8 @@ class parking():
 
     def give_occupancy_ratio(self, dayTime) :
         if dayTime == "morning" :
-            self.ratio = calculate_ratio(self, self.morningOCC)
+            self.ratio = self.calculate_ratio(self, self.morningOCC)
         elif dayTime == "noon" :
-            self.ratio = calculate_ratio(self, self.noonOCC)
+            self.ratio = self.calculate_ratio(self, self.noonOCC)
         else :
-            self.ratio = calculate_ratio(self, self.eveningOCC)
+            self.ratio = self.calculate_ratio(self, self.eveningOCC)
