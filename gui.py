@@ -9,6 +9,7 @@ class Window():
     def __init__(self):
         self.BLACK = (0, 0, 0)
         self.RED = (255, 0, 0)
+        self.GREEN = (0,255, 0)
         self.WHITE = (255, 255, 255)
         self.WINDOW_WIDTH = 1430
         self.WINDOW_HEIGHT = 780
@@ -19,13 +20,13 @@ class Window():
         self.BUTTON_WIDTH = 15
         self.button_state = []
         self.advanced_enabled = 0
-        self.advanced_enabled = 1
+        self.advanced_enabled = 0
         self.buttons = []
         self.add_button()
 
 
     def add_button(self):
-        self.buttons.append(Button(0, self.WINDOW_HEIGHT - 20, self.RED ,"Extra",self.WHITE, self, 50, 20, 1, 0, 5))
+        self.buttons.append(Button(0, self.WINDOW_HEIGHT - 20, self.RED ,"Extra ",self.WHITE, self, 50, 20, 1, 0, 5))
         self.buttons.append((Button(0, self.WINDOW_HEIGHT - 100 ,self.BLACK, "Matin",self.BLACK,  self, 15, 15, 1, 2, 20)))
         self.buttons.append((Button(0,self.WINDOW_HEIGHT - 70, self.BLACK, "Midi",self.BLACK, self, 15, 15, 1, 2, 20)))
         self.buttons.append((Button(0, self.WINDOW_HEIGHT - 40, self.BLACK, "Soir",self.BLACK, self, 15, 15, 1, 2, 20)))
@@ -50,6 +51,11 @@ class Window():
     def check_button_click(self, pos):
         for button in self.buttons:
             self.button_click(button, pos)
+        if self.buttons[0].pushed == 1:
+            self.advanced_enabled = 1
+        else:
+            self.advanced_enabled = 0
+
 
     def button_click(self,button, pos):
         if (pos[0] > button.coord[0] and pos[0] < button.coord[0]+button.BUTTON_WIDTH):
@@ -59,7 +65,6 @@ class Window():
                 else:
                     button.pushed = 0
 
-            print(button.text + " {}".format(button.pushed))
 
 
 class Button():
@@ -78,6 +83,8 @@ class Button():
         self.pushed = 0
 
     def draw_button(self):
+        if self.pushed == 1:
+            pygame.draw.rect(self.window.window, self.window.GREEN, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), 0)
         pygame.draw.rect(self.window.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
 
 
