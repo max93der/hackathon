@@ -17,6 +17,8 @@ generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 1
 win = Window()
 
 running = True
+Ensart = True
+Enville = True
 #display the first datas
 parking_list = decrypt("parking_gen.csv")
 
@@ -41,21 +43,24 @@ for parking in parking_list:
 
 
 while (running):
-    win.window.blit(win.background, (0,0))
-    win.draw_backboarder()
-    win.window.blit(win.iphone, (0, 0))
+    while Ensart:
+        win.window.blit(win.background, (0,0))
+        win.draw_backboarder()
+        win.window.blit(win.iphone, (0, 0))
 
-    #displaying initial data
-    
+        #displaying initial data
+        
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-    
-        if event.type == pygame.MOUSEBUTTONUP:
-            pos = pygame.mouse.get_pos()
-            win.check_button_click(pos)
-    
-    win.draw_timeline()
-    win.draw_button()
-    pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+        
+            if event.type == pygame.MOUSEBUTTONUP:
+                pos = pygame.mouse.get_pos()
+                win.check_button_click(pos)
+        
+        win.draw_timeline()
+        win.draw_button()
+        pygame.display.flip()
+    while Enville:
+        pass
