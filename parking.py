@@ -2,7 +2,6 @@ import pygame
 
 class parking():
 
-<<<<<<< HEAD
     # ------------------------------------ DATA ------------------------------------
     # name          = nom du parking
     # xCoord        = coordonnées en x (en pixel dans un premier temps)
@@ -20,5 +19,4 @@ class parking():
         self.maxcap            = maxCap
         self.morningOCC        = morningOCC
         self.eveningOCC        = noonOCC
-<<<<<<< HEAD
         self.eveningOCC        = eveningOCC
