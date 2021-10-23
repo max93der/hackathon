@@ -20,10 +20,8 @@ running = True
 #display the first datas
 parking_list = decrypt("parking_gen.csv")
 
-    
 for parking in parking_list:
     for hours in parking:
-        
         if hours.maxcap/hours.Ocupation > 0.66:
             #print(hours.maxcap/hours.Ocupation)
             

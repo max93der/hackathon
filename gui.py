@@ -62,18 +62,26 @@ class Window():
             # ---- displaying color circles 
             parking_list = decrypt("parking_gen.csv")
 
-            """
             for parking in parking_list:
-                
-                if parking.noonOCC/parking.maxcap > 0.66:
-                    self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+                for hours in parking:
+                    
+                    if hours.maxcap/hours.Ocupation > 0.66:
+                        #print(hours.maxcap/hours.Ocupation)
+                        
+                        self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
+                        
+                    elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
+                        #print(hours.maxcap/hours.Ocupation)
+                        #print(days_count)
+                        
+                        self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
+                    else:
+                        
+                        #print(days_count)
+                        #print(hours.maxcap/hours.Ocupation)
+                        self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
 
-                elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
 
-                    self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
-                else:
-                    self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
-            """
         else:
             self.advanced_enabled = 0
         #generate_file()
@@ -93,18 +101,18 @@ class Window():
                             if hours.maxcap/hours.Ocupation > 0.66:
                                 #print(hours.maxcap/hours.Ocupation)
                                 
-                                self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
+                                self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
                                 
                             elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
                                 #print(hours.maxcap/hours.Ocupation)
                                 #print(days_count)
                                 
-                                self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
+                                self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
                             else:
                                 
                                 #print(days_count)
                                 #print(hours.maxcap/hours.Ocupation)
-                                self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
+                                self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
                   
                 else:
                     button.pushed = 0

@@ -24,7 +24,7 @@ def decrypt(filename):
                 #print(len(parking_hours))
                 if len(parking_hours) == 12:
                     parking_list.append(parking_hours)
-                    parking_hours.clear()
+                    
 
     return parking_list
 
