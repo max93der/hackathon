@@ -84,7 +84,7 @@ class Window():
 
         else:
             self.advanced_enabled = 0
-        #generate_file()
+        generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
         
         
 
@@ -95,7 +95,7 @@ class Window():
             if (pos[1] > button.coord[1] and pos[1] < button.coord[1] + button.BUTTON_WIDTH):
                 if button.pushed == 0:
                     button.pushed = 1
-                    for parking in parking_list:
+                    """for parking in parking_list:
                         for hours in parking:
                             
                             if hours.maxcap/hours.Ocupation > 0.66:
@@ -113,7 +113,7 @@ class Window():
                                 #print(days_count)
                                 #print(hours.maxcap/hours.Ocupation)
                                 self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
-                  
+                  """
                 else:
                     button.pushed = 0
                     
@@ -142,13 +142,13 @@ class Button():
             # --- drawing circles
             for parking in parking_list:
                 for hours in parking:
-                    
-                    if hours.maxcap/hours.Ocupation > 0.66:
+                    print(hours.maxcap/hours.Ocupation)
+                    if hours.maxcap/hours.Ocupation > 5:
                         #print(hours.maxcap/hours.Ocupation)
                         
                         self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
                         
-                    elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
+                    elif hours.maxcap/hours.Ocupation < 5 and hours.maxcap/hours.Ocupation > 2:
                         #print(hours.maxcap/hours.Ocupation)
                         #print(days_count)
                         
