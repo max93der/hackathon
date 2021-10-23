@@ -6,6 +6,7 @@ from parking import *
 
 def decrypt(filename):
     parking_list = []
+    parking_sublist = []
     with open(filename) as file:
         reader  = csv.reader(file, delimiter=',')
         line_count = 0
@@ -15,7 +16,7 @@ def decrypt(filename):
                 #print(f'les colones sont : {",".join(row)}')
                 line_count += 1
             else:
-                parking_list.append(parking(row[0], int(row[1]), int(row[2]), int(row[3]), int(row[4]), int(row[5]), int(row[6]),  int(row[7]) )) 
+                parking_list.append(parking(row[0], int(row[1]), int(row[2]), int(row[3]), int(row[4]))) 
                 #print(f'les colones sont : {",".join(row)}')
                 line_count += 1
     

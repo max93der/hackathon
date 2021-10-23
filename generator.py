@@ -13,23 +13,33 @@ from parking import *
 # noonOcc       = taux d'affluence à midi (numérateur du ratio d'affluence)
 # eveningOcc    = taux d'affluence au soir (numérateur du ratio d'affluence)
 
-def generate_file():
-    header = ["name","xCoord","yCoord","areaRadius","maxCap","morningOcc","noonOcc","eveningOcc"]
+def generate_file(x1, y1, x2, y2, x3, y3, x4,y4, x5, y5, x6, y6, x7, y7, x8, y8):
+    header = ["name","xCoord","yCoord","areaRadius","maxCap"]
 
     data = [
-        ['Parking_A', 790, 175, 20, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
-        ['Parking_B', 900, 165, 20, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
-        ['Parking_C', 960, 145, 20, 200, rd.randint(0, 200), rd.randint(0, 200), rd.randint(0, 200)],
-        ['Parking_D', 1045, 90, 20, 50, rd.randint(0, 50), rd.randint(0, 50), rd.randint(0, 50)],
-        ['Parking_B28', 420, 220, 20, 80, rd.randint(0, 80), rd.randint(0, 80), rd.randint(0, 80)],
-        ['Parking_Trifacultaire', 1125, 185, 20, 120, rd.randint(0, 120), rd.randint(0, 120), rd.randint(0, 120)],
-        ['Parking_B52', 300, 160, 20, 70, rd.randint(0, 70), rd.randint(0, 70), rd.randint(0, 70)],
-        ['Parking_B37', 400, 155, 20, 30, rd.randint(0, 30), rd.randint(0, 30), rd.randint(0, 30)]
+        ['Parking_A', x1, y1, 20, 200 ],
+        ['Parking_B', x2, y2, 20, 200 ],
+        ['Parking_C', x3, y3, 20, 200 ],
+        ['Parking_D', x4, y4, 20, 50  ],
+        ['Parking_B28', x5, y5, 20, 80],
+        ['Parking_Trifacultaire', x6, y6, 20, 120],
+        ['Parking_B52', x7, y7, 20, 70 ],
+        ['Parking_B37', x8, y8, 20, 30 ]
     ]
 
+    
     # ------------------------------------ WRITING ---------------------------------
     with open('parking_gen.csv', 'w', encoding='UTF8', newline='') as file:
-
+       
         writer =  csv.writer(file)
         writer.writerow(header)
-        writer.writerows(data)
+
+        for i in range(0, 13):
+            writer.writerows(data)
+
+
+generate_file(1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+
+
+
+

@@ -11,7 +11,7 @@ RED_trns   = (255,  0,  0, 100)    # red
 GREEN_trns = (0  ,255, 0 , 100) #green
 ORANGE_trns  = (255  ,128 , 0, 128) #blue
 
-generate_file()
+generate_file(1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
 
 win = Window()
 
