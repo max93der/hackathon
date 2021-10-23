@@ -1,7 +1,4 @@
 import pygame
-from pygame import draw
-
-from decryptor import decrypt
 
 class Window():
 
@@ -16,8 +13,6 @@ class Window():
         self.font = pygame.font.SysFont('Arial', 20)
         pygame.display.set_caption("SPOT FINDER")
         self.BUTTON_WIDTH = 15
-        self.button_state = []
-        self.advanced_enabled = 0
         self.advanced_enabled = 1
         self.buttons = []
         self.add_button()
@@ -65,3 +60,16 @@ class Button():
     def draw_button(self):
         pygame.draw.rect(self.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_WIDTH,), 2)
 
+    def button_click(coord, state, width, event):
+        if event.type == pygame.MOUSEBUTTONUP:
+            pos = pygame.mouse.get_pos()
+
+            if pos(0)>coord(0) and pos(0)<coord(0) + width:
+                if pos(1)>coord(1) and pos(1)<coord(1) + width:
+
+                    if state == 1:
+                        state = 0
+                    if state == 0:
+                        state = 1
+
+        return state
