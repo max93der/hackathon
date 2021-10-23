@@ -6,7 +6,7 @@ from gui import Window
 
 #initialisaiton de pygame et definition de variables nécessaires
 pygame.init()
-RED_trns   = (255,  0,  0,100)    # red
+RED_trns   = (255,  0,  0, 100)    # red
 GREEN_trns = (0  ,255, 0 , 100) #green
 BLUE_trns  = (0  ,0 , 255, 100) #blue
 
