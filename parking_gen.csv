@@ -1,4 +1,5 @@
 name,xCoord,yCoord,areaRadius,maxCap,morningOcc,noonOcc,eveningOcc
+<<<<<<< HEAD
 Parking_A,790,175,50,200,167,32,77
 Parking_B,900,165,50,200,74,119,178
 Parking_C,960,145,50,200,2,91,65
@@ -7,3 +8,13 @@ Parking_B28,420,220,50,80,41,40,7
 Parking_Trifacultaire,1125,185,50,120,41,44,1
 Parking_B52,300,160,50,70,34,50,26
 Parking_B37,400,155,50,30,22,25,20
+=======
+Parking_A,790,175,50,200,7,90,200
+Parking_B,900,165,50,200,200,192,200
+Parking_C,960,145,50,200,88,135,89
+Parking_D,1045,90,50,50,40,30,49
+Parking_B28,420,220,50,80,67,21,78
+Parking_Trifacultaire,1125,185,50,120,5,14,29
+Parking_B52,300,160,50,70,16,16,27
+Parking_B37,400,155,50,30,10,25,3
+>>>>>>> 0930ce19e8981aeb2fc98209df9679dde0dfc95f
