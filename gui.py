@@ -1,6 +1,4 @@
 import pygame
-from pygame import draw
-from pygame.draw import circle
 from generator import generate_file
 from decryptor import decrypt
 
@@ -13,23 +11,30 @@ class Window():
         self.WHITE = (255, 255, 255)
         self.WINDOW_WIDTH = 1430
         self.WINDOW_HEIGHT = 780
+        self.ICON_WIDTH = 100
+        self.ICON_HEIGHT = 100
         self.window = pygame.display.set_mode((self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.background = pygame.image.load("assets/bg.png")
+        self.background2 = pygame.image.load("assets/ath.png")
+        self.pmrblanc = pygame.transform.scale(pygame.image.load("assets/PMRblanc.png"), (self.ICON_WIDTH, self.ICON_HEIGHT))
+
+        self.pmrbleu = pygame.transform.scale(pygame.image.load("assets/PMRbleu.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
+        self.pmrrect = self.pmrbleu.get_rect()
+        self.prise = pygame.transform.scale(pygame.image.load("assets/prise.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
+        self.prise_blanc = pygame.transform.scale(pygame.image.load("assets/prise_blanc.png"),(self.ICON_WIDTH, self.ICON_HEIGHT))
         self.iphone = pygame.transform.scale(pygame.image.load("assets/iphone.png"), (self.WINDOW_WIDTH, self.WINDOW_HEIGHT))
         self.font = pygame.font.SysFont('Arial', 25)
         pygame.display.set_caption("SPOT FINDER")
         self.BUTTON_WIDTH = 15
         self.button_state = []
         self.advanced_enabled = 0
-        self.advanced_enabled = 0   
+        self.advanced_enabled = 0
         self.buttons = []
-        self.add_button()
-
-
-    def add_button(self):
-
-        self.buttons.append((Button(self.WINDOW_WIDTH - 400, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PMR",self.BLACK,  self, 15, 15, 1, 2, 20)))
-        self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 100, self.BLACK, "Electricité",self.BLACK, self, 15, 15, 1, 2, 20)))
+        self.buttons.append(self.pmrblanc)
+        self.buttons.append(self.prise_blanc)
+        self.blue_prise = 0
+        self.pushed = 0
+        self.blue_pmr = 0
 
     def draw_backboarder(self):
         s = pygame.Surface((self.WINDOW_WIDTH, 140), pygame.SRCALPHA)
@@ -37,17 +42,37 @@ class Window():
         self.window.blit(s, (0, self.WINDOW_HEIGHT - 140))
 
     def draw_button(self):
-            for button in self.buttons:
-                if button.visibility == 1:
-                    button.draw_button()
-                    button.draw_text()
+        parking_list = decrypt("parking_gen.csv")
 
-    def draw_timeline(self):
-        i = 150
-        while i <= 570:
-            pygame.draw.line(self.window, (0, 0, 0), (150, 680), (570, 680), 6)
-            pygame.draw.line(self.window, (0, 0, 0), (i, 700), (i, 660), 6)
-            i += 35
+        if (self.blue_pmr == 0):
+            self.window.blit(self.pmrblanc, (self.WINDOW_WIDTH - self.ICON_WIDTH - 100, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+        else:
+            self.window.blit(self.pmrbleu, (
+                self.WINDOW_WIDTH - self.ICON_WIDTH - 100, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+
+        if (self.blue_prise == 0):
+            self.window.blit(self.prise_blanc, (self.WINDOW_WIDTH - self.ICON_WIDTH - 300, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+        else:
+            self.window.blit(self.prise, (
+                self.WINDOW_WIDTH - self.ICON_WIDTH - 300, self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50))
+
+        for parking in parking_list:
+
+            if parking.maxcap / parking.Ocupation > 5:
+                # print(parking.maxcap/parking.Ocupation)
+
+                self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+
+            elif parking.maxcap / parking.Ocupation < 5 and parking.maxcap / parking.Ocupation > 3:
+                # print(parking.maxcap/parking.Ocupation)
+                # print(days_count)
+
+                self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
+            else:
+
+                # print(days_count)
+                # print(parking.maxcap/parking.Ocupation)
+                self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
 
     def draw_cercle(self, x, y, radius, color):
 
@@ -55,65 +80,45 @@ class Window():
         pygame.draw.circle(circle, color, (x, y), radius)
         self.window.blit(circle, (0, 0))
 
-    def check_button_click(self, pos):
-        for button in self.buttons:
-            self.button_click(button, pos)
+    def check_button_click(self, eventpos):
 
-            # ---- displaying color circles 
-            parking_list = decrypt("parking_gen.csv")
+        parking_list = decrypt("parking_gen.csv")
 
-            for parking in parking_list:
-                for hours in parking:
-                    
-                    if hours.maxcap/hours.Ocupation > 0.66:
-                        #print(hours.maxcap/hours.Ocupation)
-                        
-                        self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
-                        
-                    elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
-                        #print(hours.maxcap/hours.Ocupation)
-                        #print(days_count)
-                        
-                        self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
-                    else:
-                        
-                        #print(days_count)
-                        #print(hours.maxcap/hours.Ocupation)
-                        self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
+        pmrblanc_rect = self.pmrblanc.get_rect()
+        pmrblanc_rect.x = self.WINDOW_WIDTH - self.ICON_WIDTH - 100
+        pmrblanc_rect.y = self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50
 
 
-        else:
-            self.advanced_enabled = 0
-        generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
-        
-        
+        priseblanc_rect = self.prise_blanc.get_rect()
+        priseblanc_rect.x = self.WINDOW_WIDTH - self.ICON_WIDTH - 300
+        priseblanc_rect.y = self.WINDOW_HEIGHT - self.ICON_HEIGHT - 50
 
+        if pmrblanc_rect.collidepoint(eventpos):
+            self.pushed = 1
+            if self.blue_pmr == 1:
+                self.blue_pmr = 0
+            else:
+                self.blue_pmr = 1
+
+            generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
+
+        if priseblanc_rect.collidepoint(eventpos):
+            self.pushed = 1
+
+            if self.blue_prise == 1:
+                self.blue_prise = 0
+            else:
+                self.blue_prise = 1
+
+        generate_file(790, 175, 900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
 
     def button_click(self,button, pos):
-        parking_list = decrypt("parking_gen.csv")
         if (pos[0] > button.coord[0] and pos[0] < button.coord[0]+button.BUTTON_WIDTH):
             if (pos[1] > button.coord[1] and pos[1] < button.coord[1] + button.BUTTON_WIDTH):
                 if button.pushed == 0:
                     button.pushed = 1
-                    """for parking in parking_list:
-                        for hours in parking:
-                            
-                            if hours.maxcap/hours.Ocupation > 0.66:
-                                #print(hours.maxcap/hours.Ocupation)
-                                
-                                self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
-                                
-                            elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
-                                #print(hours.maxcap/hours.Ocupation)
-                                #print(days_count)
-                                
-                                self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
-                            else:
-                                
-                                #print(days_count)
-                                #print(hours.maxcap/hours.Ocupation)
-                                self.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
-                  """
+
+
                 else:
                     button.pushed = 0
                     
@@ -141,23 +146,23 @@ class Button():
             pygame.draw.rect(self.window.window, self.window.GREEN, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), 0)
             # --- drawing circles
             for parking in parking_list:
-                for hours in parking:
-                    print(hours.maxcap/hours.Ocupation)
-                    if hours.maxcap/hours.Ocupation > 5:
-                        #print(hours.maxcap/hours.Ocupation)
-                        
-                        self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
-                        
-                    elif hours.maxcap/hours.Ocupation < 5 and hours.maxcap/hours.Ocupation > 2:
-                        #print(hours.maxcap/hours.Ocupation)
-                        #print(days_count)
-                        
-                        self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
-                    else:
-                        
-                        #print(days_count)
-                        #print(hours.maxcap/hours.Ocupation)
-                        self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
+                
+                print(parking.maxcap/parking.Ocupation)
+                if parking.maxcap/parking.Ocupation > 5:
+                    #print(parking.maxcap/parking.Ocupation)
+                    
+                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+                    
+                elif parking.maxcap/parking.Ocupation < 0.66 and parking.maxcap/parking.Ocupation > 0.33:
+                    #print(parking.maxcap/parking.Ocupation)
+                    #print(days_count)
+                    
+                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
+                else:
+                    
+                    #print(days_count)
+                    #print(parking.maxcap/parking.Ocupation)
+                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
 
         pygame.draw.rect(self.window.window, self.color,(self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
 

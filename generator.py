@@ -33,9 +33,7 @@ def generate_file(x1, y1, x2, y2, x3, y3, x4,y4, x5, y5, x6, y6, x7, y7, x8, y8)
        
         writer =  csv.writer(file)
         writer.writerow(header)
-       
-        for i in range(0, 12):
-            writer.writerows(data)
+        writer.writerows(data)
 
 
 generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
