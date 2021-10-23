@@ -23,7 +23,6 @@ while (running):
     win.window.blit(win.background, (0,0))
     win.draw_toggled_button()
     win.draw_button()
-    
+
     win.draw_cercle(800, 80, 40, RED_trns)
     pygame.display.flip()
-
