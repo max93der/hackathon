@@ -23,22 +23,22 @@ Enville = True
 parking_list = decrypt("parking_gen.csv")
 
 for parking in parking_list:
-    for hours in parking:
-        if hours.maxcap/hours.Ocupation > 0.66:
-            #print(hours.maxcap/hours.Ocupation)
-            
-            win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
-            
-        elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
-            #print(hours.maxcap/hours.Ocupation)
-            #print(days_count)
-            
-            win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
-        else:
-            
-            #print(days_count)
-            #print(hours.maxcap/hours.Ocupation)
-            win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
+    
+    if parking.maxcap/parking.Ocupation > 0.66:
+        #print(parking.maxcap/parking.Ocupation)
+        
+        win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+        
+    elif parking.maxcap/parking.Ocupation < 0.66 and parking.maxcap/parking.Ocupation > 0.33:
+        #print(parking.maxcap/parking.Ocupation)
+        #print(days_count)
+        
+        win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
+    else:
+        
+        #print(days_count)
+        #print(parking.maxcap/parking.Ocupation)
+        win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
 
 
 
@@ -57,6 +57,7 @@ while (running):
         
             if event.type == pygame.MOUSEBUTTONUP:
                 pos = pygame.mouse.get_pos()
+                
                 win.check_button_click(pos)
         
         win.draw_timeline()
