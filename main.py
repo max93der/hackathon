@@ -12,15 +12,35 @@ RED_trns   = (255,  0,  0, 100)    # red
 GREEN_trns = (0  ,255, 0 , 100) #green
 ORANGE_trns  = (255  ,128 , 0, 128) #blue
 
-generate_file(1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+generate_file(790, 175,900, 165, 960, 145, 1045, 90, 420, 220, 1125, 185, 300, 160, 400, 155)
 
 win = Window()
 
 running = True
 #display the first datas
-#parking_list = decrypt("parking_gen.csv")
+parking_list = decrypt("parking_gen.csv")
 
-#print(parking_list[0][0][0].name)
+    
+for parking in parking_list:
+    for hours in parking:
+        
+        if hours.maxcap/hours.Ocupation > 0.66:
+            #print(hours.maxcap/hours.Ocupation)
+            
+            win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
+            
+        elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
+            #print(hours.maxcap/hours.Ocupation)
+            #print(days_count)
+            
+            win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
+        else:
+            
+            #print(days_count)
+            #print(hours.maxcap/hours.Ocupation)
+            win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
+
+
 
 while (running):
     win.window.blit(win.background, (0,0))
@@ -29,31 +49,6 @@ while (running):
 
     #displaying initial data
     
-    """
-    for parking in parking_list:
-        
-        
-        for days in parking:
-            days_count = 0
-            for hours in days:
-                days_count += 1
-                print(days_count)
-                if hours.maxcap/hours.Ocupation > 0.66:
-                    #print(hours.maxcap/hours.Ocupation)
-                    
-                    #win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
-                    pass
-                elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
-                    #print(hours.maxcap/hours.Ocupation)
-                    #print(days_count)
-                    pass
-                    #win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
-                else:
-                    pass
-                    #print(days_count)
-                    #print(hours.maxcap/hours.Ocupation)
-                    win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
-"""
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

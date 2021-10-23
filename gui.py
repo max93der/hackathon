@@ -82,13 +82,33 @@ class Window():
 
 
     def button_click(self,button, pos):
+        parking_list = decrypt("parking_gen.csv")
         if (pos[0] > button.coord[0] and pos[0] < button.coord[0]+button.BUTTON_WIDTH):
             if (pos[1] > button.coord[1] and pos[1] < button.coord[1] + button.BUTTON_WIDTH):
                 if button.pushed == 0:
                     button.pushed = 1
+                    for parking in parking_list:
+                        for hours in parking:
+                            
+                            if hours.maxcap/hours.Ocupation > 0.66:
+                                #print(hours.maxcap/hours.Ocupation)
+                                
+                                self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
+                                
+                            elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
+                                #print(hours.maxcap/hours.Ocupation)
+                                #print(days_count)
+                                
+                                self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
+                            else:
+                                
+                                #print(days_count)
+                                #print(hours.maxcap/hours.Ocupation)
+                                self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
                   
                 else:
                     button.pushed = 0
+                    
 
 
 
@@ -108,25 +128,29 @@ class Button():
         self.pushed = 0
 
     def draw_button(self):
+        parking_list = decrypt("parking_gen.csv")
         if self.pushed == 1:
             pygame.draw.rect(self.window.window, self.window.GREEN, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), 0)
             # --- drawing circles
-            """
-            parking_list = decrypt("parking_gen.csv")
-    
             for parking in parking_list:
-                
-                if parking.noonOCC/parking.maxcap > 0.66:
-                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+                for hours in parking:
+                    
+                    if hours.maxcap/hours.Ocupation > 0.66:
+                        #print(hours.maxcap/hours.Ocupation)
+                        
+                        self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
+                        
+                    elif hours.maxcap/hours.Ocupation < 0.66 and hours.maxcap/hours.Ocupation > 0.33:
+                        #print(hours.maxcap/hours.Ocupation)
+                        #print(days_count)
+                        
+                        self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
+                    else:
+                        
+                        #print(days_count)
+                        #print(hours.maxcap/hours.Ocupation)
+                        self.window.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
 
-                elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
-
-                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
-                else:
-                    self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
-        
-        
-        """
         pygame.draw.rect(self.window.window, self.color,(self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
 
     def draw_text(self):
