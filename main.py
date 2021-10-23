@@ -18,7 +18,7 @@ win = Window()
 win2 = Window()
 
 running = True
-Ensart = False
+Ensart = True
 Enville = True
 #display the first datas
 parking_list = decrypt("parking_gen.csv")
@@ -57,9 +57,11 @@ while (running):
                 pygame.quit()
         
             if event.type == pygame.MOUSEBUTTONUP:
-                pos = pygame.mouse.get_pos()
-                
+                pos = pygame.mouse.get_pos() 
                 win.check_button_click(pos)
+            if event.type == pygame.K_SPACE:
+                Enville = True
+                Ensart = False
         
         win.draw_timeline()
         win.draw_button()
