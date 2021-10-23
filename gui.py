@@ -27,21 +27,15 @@ class Window():
 
 
     def add_button(self):
-        self.buttons.append(Button(0, self.WINDOW_HEIGHT - 20, self.RED ,"Extra ",self.WHITE, self, 50, 20, 1, 0, 5))
-        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 100 ,self.BLACK, "Matin",self.BLACK,  self, 15, 15, 1, 2, 20)))
-        self.buttons.append((Button(0,self.WINDOW_HEIGHT - 70, self.BLACK, "Midi",self.BLACK, self, 15, 15, 1, 2, 20)))
-        self.buttons.append((Button(0, self.WINDOW_HEIGHT - 40, self.BLACK, "Soir",self.BLACK, self, 15, 15, 1, 2, 20)))
+
+        self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PME",self.BLACK,  self, 15, 15, 1, 2, 20)))
+        self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 70, self.BLACK, "Electricité",self.BLACK, self, 15, 15, 1, 2, 20)))
 
     def draw_button(self):
-        if self.advanced_enabled == 1:
-            pygame.draw.rect(self.window, self.WHITE, (0, self.WINDOW_HEIGHT - 180, self.WINDOW_WIDTH, 200))
-            for button in self.buttons[1:]:
+            for button in self.buttons:
                 if button.visibility == 1:
                     button.draw_button()
                     button.draw_text()
-
-        self.buttons[0].draw_button()
-        self.buttons[0].draw_text()
 
     def draw_cercle(self, x, y, radius, color):
 
@@ -52,18 +46,14 @@ class Window():
     def check_button_click(self, pos):
         for button in self.buttons:
             self.button_click(button, pos)
-            if button.pushed == 1:
-                for button_clicked in self.buttons[1:]:
-                    if button_clicked != button:
-                        button_clicked.pushed = 0
-
 
         if self.buttons[0].pushed == 1:
             self.advanced_enabled = 1
 
             # ---- displaying color circles 
             parking_list = decrypt("parking_gen.csv")
-    
+
+            """
             for parking in parking_list:
                 
                 if parking.noonOCC/parking.maxcap > 0.66:
@@ -74,10 +64,10 @@ class Window():
                     self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
                 else:
                     self.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
-
+            """
         else:
             self.advanced_enabled = 0
-        generate_file()
+        #generate_file()
         
         
 
@@ -112,6 +102,7 @@ class Button():
         if self.pushed == 1:
             pygame.draw.rect(self.window.window, self.window.GREEN, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), 0)
             # --- drawing circles
+            """
             parking_list = decrypt("parking_gen.csv")
     
             for parking in parking_list:
@@ -124,8 +115,10 @@ class Button():
                     self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
                 else:
                     self.window.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
-        pygame.draw.rect(self.window.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
-
+        
+        
+        """
+        pygame.draw.rect(self.window.window, self.color,(self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
 
     def draw_text(self):
         self.window.window.blit(self.window.font.render(self.text, True, self.window.BLACK), (self.coord[0] + self.offset, self.coord[1] - 5))
