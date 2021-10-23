@@ -50,6 +50,6 @@ while (running):
             pos = pygame.mouse.get_pos()
             win.check_button_click(pos)
     
-
+    win.draw_timeline()
     win.draw_button()
     pygame.display.flip()

@@ -28,7 +28,7 @@ class Window():
 
     def add_button(self):
 
-        self.buttons.append((Button(self.WINDOW_WIDTH - 400, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PME",self.BLACK,  self, 15, 15, 1, 2, 20)))
+        self.buttons.append((Button(self.WINDOW_WIDTH - 400, self.WINDOW_HEIGHT - 100 ,self.BLACK, "PMR",self.BLACK,  self, 15, 15, 1, 2, 20)))
         self.buttons.append((Button(self.WINDOW_WIDTH - 200, self.WINDOW_HEIGHT - 100, self.BLACK, "Electricité",self.BLACK, self, 15, 15, 1, 2, 20)))
 
     def draw_backborder(self):
@@ -41,6 +41,13 @@ class Window():
                 if button.visibility == 1:
                     button.draw_button()
                     button.draw_text()
+
+    def draw_timeline(self):
+        i = 150
+        while i <= 570:
+            pygame.draw.line(self.window, (0, 0, 0), (150, 680), (570, 680), 6)
+            pygame.draw.line(self.window, (0, 0, 0), (i, 700), (i, 660), 6)
+            i += 35
 
     def draw_cercle(self, x, y, radius, color):
 
