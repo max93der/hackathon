@@ -25,13 +25,13 @@ def decrypt(filename):
                     parking_days.append(parking_hours)
                     parking_hours.clear
                     if hours_count % 12 == 0:
-                        parking_list.append(parking_hours)
-                        parking_hours.clear
+                        parking_list.append(parking_days)
+                        parking_days.clear
 
 
     return parking_list
 
-print(decrypt("parking_gen.csv")[0][0].name)
+print(decrypt("parking_gen.csv")[0][0][0].name)
 
 
 

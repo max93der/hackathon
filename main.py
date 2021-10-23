@@ -19,6 +19,8 @@ running = True
 #display the first datas
 parking_list = decrypt("parking_gen.csv")
 
+print(parking_list[0][0][0])
+
 
 
 
