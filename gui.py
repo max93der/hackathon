@@ -47,8 +47,20 @@ class Window():
         pygame.draw.circle(circle, color, (x, y), radius)
         self.window.blit(circle, (0, 0))
 
-    
-        
+    def check_button_click(self, pos):
+        for button in self.buttons:
+            self.button_click(button, pos)
+
+    def button_click(self,button, pos):
+        if (pos[0] > button.coord[0] and pos[0] < button.coord[0]+button.BUTTON_WIDTH):
+            if (pos[1] > button.coord[1] and pos[1] < button.coord[1] + button.BUTTON_WIDTH):
+                if button.pushed == 0:
+                    button.pushed = 1
+                else:
+                    button.pushed = 0
+
+            print(button.text + " {}".format(button.pushed))
+
 
 class Button():
     def __init__(self,x, y, color, text, text_color, window, BUTTON_WIDTH, BUTTON_HEIGHT, visivility, filled, offset):
@@ -63,6 +75,7 @@ class Button():
         self.visibility = visivility
         self.filled = filled
         self.offset = offset
+        self.pushed = 0
 
     def draw_button(self):
         pygame.draw.rect(self.window.window, self.color, (self.coord[0], self.coord[1], self.BUTTON_WIDTH, self.BUTTON_HEIGHT), self.filled)
@@ -70,17 +83,3 @@ class Button():
 
     def draw_text(self):
         self.window.window.blit(self.window.font.render(self.text, True, self.window.BLACK), (self.coord[0] + self.offset, self.coord[1] - 5))
-
-    def button_click(coord, state, width, event):
-        if event.type == pygame.MOUSEBUTTONUP:
-            pos = pygame.mouse.get_pos()
-
-            if pos(0)>coord(0) and pos(0)<coord(0) + width:
-                if pos(1)>coord(1) and pos(1)<coord(1) + width:
-
-                    if state == 1:
-                        state = 0
-                    if state == 0:
-                        state = 1
-
-        return state

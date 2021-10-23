@@ -23,6 +23,9 @@ while (running):
         if event.type == pygame.QUIT:
             pygame.quit()
 
+        if event.type == pygame.MOUSEBUTTONUP:
+            pos = pygame.mouse.get_pos()
+            win.check_button_click(pos)
     win.window.blit(win.background, (0,0))
 
     # draw all parlkings on the map
