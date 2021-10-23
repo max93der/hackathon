@@ -18,7 +18,7 @@ def decrypt(filename):
                 line_count += 1
             else:
                 
-                parking_hours.append(parking(row[0], int(row[1]), int(row[2]), int(row[3]), int(row[4]))) 
+                parking_hours.append(parking(row[0], int(row[1]), int(row[2]), int(row[3]), int(row[4]), int(row[5]))) 
                 #print(f'les colones sont : {",".join(row)}')
                 line_count += 1
                 if line_count %8 == 0:

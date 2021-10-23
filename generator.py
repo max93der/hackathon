@@ -17,14 +17,14 @@ def generate_file(x1, y1, x2, y2, x3, y3, x4,y4, x5, y5, x6, y6, x7, y7, x8, y8)
     header = ["name","xCoord","yCoord","areaRadius","maxCap"]
 
     data = [
-        ['Parking_A', x1, y1, 20, 200 ],
-        ['Parking_B', x2, y2, 20, 200 ],
-        ['Parking_C', x3, y3, 20, 200 ],
-        ['Parking_D', x4, y4, 20, 50  ],
-        ['Parking_B28', x5, y5, 20, 80],
-        ['Parking_Trifacultaire', x6, y6, 20, 120],
-        ['Parking_B52', x7, y7, 20, 70 ],
-        ['Parking_B37', x8, y8, 20, 30 ]
+        ['Parking_A', x1, y1, 20, 200 , rd.randint(0, 100)],
+        ['Parking_B', x2, y2, 20, 200 , rd.randint(0, 100)],
+        ['Parking_C', x3, y3, 20, 200 , rd.randint(0, 100)],
+        ['Parking_D', x4, y4, 20, 50  , rd.randint(0, 100)],
+        ['Parking_B28', x5, y5, 20, 80, rd.randint(0, 100)],
+        ['Parking_Trifacultaire', x6, y6, 20, 120, rd.randint(0, 100)],
+        ['Parking_B52', x7, y7, 20, 70 , rd.randint(0, 100)],
+        ['Parking_B37', x8, y8, 20, 30 ,rd.randint(0, 100)]
     ]
 
     
