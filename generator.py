@@ -14,7 +14,7 @@ from parking import *
 # eveningOcc    = taux d'affluence au soir (numérateur du ratio d'affluence)
 
 def generate_file(x1, y1, x2, y2, x3, y3, x4,y4, x5, y5, x6, y6, x7, y7, x8, y8):
-    header = ["name","xCoord","yCoord","areaRadius","maxCap"]
+    header = ["name","xCoord","yCoord","areaRadius","maxCap", "Occupation"]
 
     data = [
         ['Parking_A', x1, y1, 20, 200 , rd.randint(0, 100)],

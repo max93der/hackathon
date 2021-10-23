@@ -31,12 +31,12 @@ while (running):
         for days in parking:
             for hours in days:
                 if hours.Ocupation/hours.Ocupation > 0.66:
-                    win.draw_cercle(hours.xCoord, parking.yCoord, parking.areaRadius, RED_trns)
+                    win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, RED_trns)
 
-                elif parking.noonOCC/parking.maxcap < 0.66 and parking.noonOCC/parking.maxcap > 0.33:
-                    win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, GREEN_trns)
+                elif hours.Ocupation/hours.maxcap < 0.66 and hours.Ocupation/hours.maxcap > 0.33:
+                    win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, GREEN_trns)
                 else:
-                    win.draw_cercle(parking.xCoord, parking.yCoord, parking.areaRadius, ORANGE_trns)
+                    win.draw_cercle(hours.xCoord, hours.yCoord, hours.areaRadius, ORANGE_trns)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
