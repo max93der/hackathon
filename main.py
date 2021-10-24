@@ -42,7 +42,7 @@ while (running):
             if event.type == pygame.K_SPACE:
                 Enville = True
                 Ensart = False
-        print(pygame.mouse.get_pos())
+
         win.draw_button()
         win.draw_icon()
         pygame.display.flip()

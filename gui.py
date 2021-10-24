@@ -42,7 +42,7 @@ class Window():
 
     def draw_backboarder(self):
         s = pygame.Surface((self.WINDOW_WIDTH, 140), pygame.SRCALPHA)
-        s.fill((200, 200, 200, 180))
+        s.fill((200, 200, 200, 0))
         self.window.blit(s, (0, self.WINDOW_HEIGHT - 140))
 
     def draw_button(self):
@@ -144,6 +144,6 @@ class Window():
 
 
 
-RED_trns   = (255,  0,  0, 100)    # red
-GREEN_trns = (0  ,255, 0 , 100) #green
-ORANGE_trns  = (255  ,128 , 0, 128) #blue
+RED_trns   = (255,  0,  0, 120)    # red
+GREEN_trns = (0  ,255, 0 , 140) #green
+ORANGE_trns  = (255  ,128 , 0, 140) #blue
